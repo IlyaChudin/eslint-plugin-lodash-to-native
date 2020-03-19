@@ -40,7 +40,9 @@ ruleTester.run("map", rule, {
        } else {
          return _.map(a,fn);
        }
-    }`
+    }`,
+    "const mapped = _.map({a:1, b:2}, fn);",
+    "const mapped = _.map('123', fn);"
   ],
 
   invalid: [
@@ -67,6 +69,11 @@ ruleTester.run("map", rule, {
     {
       code: "const reduced = _.map(a, fn).reduce(fnn);",
       output: "const reduced = (Array.isArray(a) ? a.map(fn) : _.map(a, fn)).reduce(fnn);",
+      errors
+    },
+    {
+      code: "const mapped = _.map([1,2], fn);",
+      output: "const mapped = [1,2].map(fn);",
       errors
     }
   ]
