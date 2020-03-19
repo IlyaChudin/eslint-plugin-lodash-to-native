@@ -1,19 +1,17 @@
 # eslint-plugin-lodash-to-native
 
-eslint-plugin-lodash-to-native
-
 ## Installation
 
 You'll first need to install [ESLint](http://eslint.org):
 
-```
-$ npm i eslint --save-dev
+```bash
+npm i -D eslint
 ```
 
 Next, install `eslint-plugin-lodash-to-native`:
 
-```
-$ npm install eslint-plugin-lodash-to-native --save-dev
+```bash
+npm i -D https://github.com/IlyaChudin/eslint-plugin-lodash-to-native.git
 ```
 
 **Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-lodash-to-native` globally.
@@ -33,11 +31,11 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
   "rules": {
-    "lodash-to-native/rule-name": 2
+    "lodash-to-native/map": 1
   }
 }
 ```
 
 ## Supported Rules
 
-- Fill in provided rules here
+- map
