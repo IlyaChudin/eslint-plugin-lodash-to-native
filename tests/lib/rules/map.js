@@ -45,7 +45,12 @@ ruleTester.run("map", rule, {
     "const mapped = _.map('123', fn);",
     "_ = {map: () => []}; const mapped = _.map(a, fn);",
     "global._ = {map: () => []}; const mapped = _.map(a, fn);",
-    "window._ = {map: () => []}; const mapped = _.map(a, fn);"
+    "window._ = {map: () => []}; const mapped = _.map(a, fn);",
+    "const mapped = _.map(users, 'user');",
+    `const mapped = _.map(a, x => ({
+      key: x.name,
+      value: x.age
+    }));`
   ],
 
   invalid: [
