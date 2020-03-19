@@ -42,7 +42,10 @@ ruleTester.run("map", rule, {
        }
     }`,
     "const mapped = _.map({a:1, b:2}, fn);",
-    "const mapped = _.map('123', fn);"
+    "const mapped = _.map('123', fn);",
+    "_ = {map: () => []}; const mapped = _.map(a, fn);",
+    "global._ = {map: () => []}; const mapped = _.map(a, fn);",
+    "window._ = {map: () => []}; const mapped = _.map(a, fn);"
   ],
 
   invalid: [
@@ -74,6 +77,11 @@ ruleTester.run("map", rule, {
     {
       code: "const mapped = _.map([1,2], fn);",
       output: "const mapped = [1,2].map(fn);",
+      errors
+    },
+    {
+      code: "const mapped = _.map([1,2], fn); _ = {map: () => []}; const mapped2 = _.map(a, fn);",
+      output: "const mapped = [1,2].map(fn); _ = {map: () => []}; const mapped2 = _.map(a, fn);",
       errors
     }
   ]
